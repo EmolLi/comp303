@@ -3,6 +3,7 @@ public class Student {
 	private String name;
 	private int age;
 	private int ID;
+	//do I need accessor method for the attributes?
 	
 	/**
 	 * This is the constructor for Student.
@@ -27,13 +28,14 @@ public class Student {
 	public int getAge(){
 		return age;
 	}
-
+	//  do I need to use clone?
+	//Is the last two accessors necessary?
 	/**
 	 * Return the name of the student.
 	 * @return the name of the student.
 	 */
 	public String getName(){
-		return name;
+		return new String(name);
 	}
 	
 /**
