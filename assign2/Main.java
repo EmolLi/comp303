@@ -1,11 +1,15 @@
-package leetcode;
+
+
 public class Main {
 	public static void main(String[] args){
-		Seats seats = new Seats();
+		SelectionPage gui = new SelectionPage();
+
 		
-		Runnable run1 = new SeatReserver(1, seats);
-		Runnable run2 = new SeatReserver(2, seats);
-		Runnable run3 = new SeatReserver(3, seats);
+		Seats seats = new Seats(gui);
+		
+		Runnable run1 = new SeatReserver(1, seats,gui);
+		Runnable run2 = new SeatReserver(2, seats,gui);
+		Runnable run3 = new SeatReserver(3, seats,gui);
 		
 		Thread thread1 = new Thread(run1);
 		Thread thread2 = new Thread(run2);

@@ -1,5 +1,3 @@
-package leetcode;
-
 public class Seat {
 	private int owner;
 	private int ID;
@@ -13,6 +11,7 @@ public class Seat {
 		owner = -1;
 	}
 
+	
 	public int getRow(){
 		return row;
 	}

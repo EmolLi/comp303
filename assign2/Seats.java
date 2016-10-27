@@ -1,18 +1,15 @@
-package leetcode;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+
 
 public class Seats {
 	private List<Seat> seats;
 	private int emptySeat;
 	private Lock lock = new ReentrantLock();
-	private Condition emptySeatAvail = lock.newCondition();
 	
-	public Seats(){
+	public Seats(SelectionPage gui){
 		seats = new ArrayList<Seat>();
 		for (int i = 0; i<200; i++){
 			Seat s = new Seat(i);
@@ -21,27 +18,33 @@ public class Seats {
 		emptySeat = 200;
 	}
 	
+
+	
+	public int getEmptySeat(){
+		return emptySeat;
+	}
+	
+	public List<Seat> getSeatList(){
+		return seats;
+	}
+
+	
 	/**
 	 * 
 	 * @param i the id of the seat the thread try to reserve
 	 * @throws SeatReserved 
 	 */
-	public void reservSeat(int i, int prodID) throws InterruptedException{
+	public boolean reservSeat(int i, int prodID) throws InterruptedException{
 		lock.lock();
 		try{
-			while (emptySeat == 0){
-				System.out.println("FUll");
-				emptySeatAvail.await();
-			}
+			if (emptySeat == 0) return false;
 			Seat s = seats.get(i);
-			//already reserved
 			if (s.getOwner() != -1) {
-				//System.out.println("the seat is already reserved");
-				return;
+				return false;
 			}
 			s.setOwner(prodID);
-			System.out.println("reserved: "+i+"  "+prodID);
 			emptySeat--;
+			return true;
 		}
 		finally{
 			lock.unlock();
