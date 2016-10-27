@@ -6,7 +6,9 @@ public class Main {
 
 		
 		Seats seats = new Seats(gui);
-		
+		/**
+		 * Initialize all the threads
+		 */
 		Runnable run1 = new SeatReserver(1, seats,gui);
 		Runnable run2 = new SeatReserver(2, seats,gui);
 		Runnable run3 = new SeatReserver(3, seats,gui);

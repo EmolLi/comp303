@@ -1,11 +1,19 @@
 import java.awt.GridLayout;
 
 import javax.swing.*;
+/**
+ * This class set up the GUI for the selection page
+ * @author emol
+ *
+ */
 public class SelectionPage {
 	private JFrame f;
 	private JButton seatbuttons[][];
 	
-	
+	/**
+	 * Constructor
+	 * set up all 200 buttons to represent the seats
+	 */
 	public SelectionPage(){
 		f = new JFrame();
 		seatbuttons= new JButton[50][4];
@@ -21,9 +29,17 @@ public class SelectionPage {
 		
 	}
 	
+	/**
+	 * 
+	 * @return the frame
+	 */
 	public JFrame getFrame(){
 		return f;
 	}
+	/**
+	 * 
+	 * @return the 2D array of buttons that represents the seats
+	 */
 	public JButton[][] getButtons(){
 		return seatbuttons;
 	}
