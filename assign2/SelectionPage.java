@@ -24,7 +24,7 @@ public class SelectionPage {
 			}
 		}
 		f.setLayout(new GridLayout(50,4));
-		f.setSize(170, 1000);
+		f.setSize(200, 1000);
 		f.setVisible(true);
 		
 	}
